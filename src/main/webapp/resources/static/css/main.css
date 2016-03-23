@@ -104,6 +104,7 @@ input, textarea {
 
 .auth-label-wrapper {
     width: 260px;
+    margin-top: 15px;
 }
 
 .auth-label {
@@ -118,7 +119,7 @@ input, textarea {
 }
 
 .auth-text {
-    width: 248px;
+    width: 260px;
     background-color: #ffffff;
     padding-left: 12px;
 }
