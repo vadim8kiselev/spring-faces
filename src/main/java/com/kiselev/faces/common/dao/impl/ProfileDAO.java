@@ -16,7 +16,7 @@ public class ProfileDAO implements DAO {
 
     public Long getId(ProfileEntity profile) {
         if (profile != null) {
-            return profileRepository.getId(profile.getUsername());
+            return profileRepository.getId(profile.getUsername(), profile.getPassword());
         } else
             return null;
     }
@@ -52,5 +52,9 @@ public class ProfileDAO implements DAO {
 
     public boolean isValidUrlName(String urlName) {
         return profileRepository.exists(urlName);
+    }
+
+    public boolean existUsername(String username) {
+        return profileRepository.findByUsername(username) != null;
     }
 }

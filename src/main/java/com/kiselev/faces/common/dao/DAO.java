@@ -17,4 +17,6 @@ public interface DAO {
     boolean isValidId(Long id);
 
     boolean isValidUrlName(String urlName);
+
+    boolean existUsername(String username);
 }
