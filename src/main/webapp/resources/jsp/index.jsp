@@ -20,13 +20,13 @@
                 <p class="auth-label">Usernmame</p>
             </div>
             <form:input path="username" cssClass="auth-field auth-text"
-                        autocomplete="off"/>
+                        autocomplete="off" required="required"/>
 
             <div class="auth-label-wrapper">
                 <p class="auth-label">Password</p>
             </div>
             <form:input path="password" cssClass="auth-field auth-text"
-                        autocomplete="off"/>
+                        autocomplete="off" required="required"/>
 
             <input type="submit" class="auth-field auth-button"
                    value="Sign up"/>
