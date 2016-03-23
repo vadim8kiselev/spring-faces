@@ -71,7 +71,7 @@ public class ProfileEntity {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = DigestUtils.md5Hex(DigestUtils.md5Hex(password) + "salt");
     }
 
     public String getUrlName() {
