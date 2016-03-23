@@ -14,6 +14,6 @@ public class RegistrationFacesController {
 
     @RequestMapping(value = "/method/register", method = RequestMethod.POST)
     public String register() {
-        return "profile";
+        return "redirect:/profile";
     }
 }
