@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeFacesController {
+public class SignInFacesController {
 
-    @RequestMapping(value = {"/", "/signup"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String getHandler() {
-        return "index";
+        return "signin";
     }
 
-    @RequestMapping(value = "/method/signup", method = RequestMethod.POST)
-    public String signup() {
-        return "register";
+    @RequestMapping(value = "/method/signin", method = RequestMethod.POST)
+    public String signin() {
+        return "profile";
     }
 }
