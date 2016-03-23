@@ -6,9 +6,9 @@ public interface DAO {
 
     Long getId(ProfileEntity profile);
 
-    ProfileEntity saveProfile(ProfileEntity profile);
+    Long saveProfile(ProfileEntity profile);
 
-    void deleteProfile(Long id);
+    Long deleteProfile(Long id);
 
     ProfileEntity getProfile(Long id);
 

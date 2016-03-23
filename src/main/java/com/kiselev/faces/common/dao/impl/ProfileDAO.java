@@ -4,6 +4,8 @@ import com.kiselev.faces.common.dao.DAO;
 import com.kiselev.faces.common.dao.repositories.ProfileRepository;
 import com.kiselev.faces.common.entities.ProfileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,15 +15,27 @@ public class ProfileDAO implements DAO {
     ProfileRepository profileRepository;
 
     public Long getId(ProfileEntity profile) {
-        return profileRepository.getId(profile.getUsername(), profile.getPassword());
+        if (profile != null) {
+            return profileRepository.getId(profile.getUsername());
+        } else
+            return null;
     }
 
-    public ProfileEntity saveProfile(ProfileEntity profile) {
-        return profileRepository.save(profile);
+    public Long saveProfile(ProfileEntity profile) {
+        try {
+            return profileRepository.save(profile).getId();
+        } catch (DataIntegrityViolationException e) {
+            return null;
+        }
     }
 
-    public void deleteProfile(Long id) {
-        profileRepository.delete(id);
+    public Long deleteProfile(Long id) {
+        try {
+            profileRepository.delete(id);
+            return id;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public ProfileEntity getProfile(Long id) {
