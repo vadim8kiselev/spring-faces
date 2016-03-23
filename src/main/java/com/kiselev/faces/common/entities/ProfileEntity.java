@@ -63,7 +63,7 @@ public class ProfileEntity {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username.trim();
     }
 
     public String getPassword() {
@@ -71,7 +71,7 @@ public class ProfileEntity {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password.trim();
     }
 
     public String getUrlName() {
@@ -79,7 +79,7 @@ public class ProfileEntity {
     }
 
     public void setUrlName(String urlName) {
-        this.urlName = urlName;
+        this.urlName = urlName.trim();
     }
 
     public String getFirstName() {
@@ -87,7 +87,7 @@ public class ProfileEntity {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = firstName.trim();
     }
 
     public String getLastName() {
@@ -95,7 +95,7 @@ public class ProfileEntity {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = lastName.trim();
     }
 
     public String getBirthday() {
@@ -103,7 +103,7 @@ public class ProfileEntity {
     }
 
     public void setBirthday(String birthday) {
-        this.birthday = birthday;
+        this.birthday = birthday.trim();
     }
 
     public String getHometown() {
@@ -111,7 +111,7 @@ public class ProfileEntity {
     }
 
     public void setHometown(String hometown) {
-        this.hometown = hometown;
+        this.hometown = hometown.trim();
     }
 
     public String getEmail() {
@@ -119,7 +119,7 @@ public class ProfileEntity {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim();
     }
 
     public String getPhoto() {
@@ -127,7 +127,7 @@ public class ProfileEntity {
     }
 
     public void setPhoto(String photo) {
-        this.photo = photo;
+        this.photo = photo.trim();
     }
 
     public String getLanguage() {
