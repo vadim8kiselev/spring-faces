@@ -6,7 +6,7 @@ import com.kiselev.faces.common.entities.ProfileEntity;
 import com.kiselev.faces.web.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +24,7 @@ public class HomeFacesController {
     Validator validator;
 
     @RequestMapping(value = {"/", "/signup"}, method = RequestMethod.GET)
-    public String getHandler(Model model) {
+    public String getHandler(ModelMap model) {
         model.addAttribute("profile", new ProfileEntity());
         return "index";
     }
