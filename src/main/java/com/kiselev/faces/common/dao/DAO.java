@@ -14,9 +14,5 @@ public interface DAO {
 
     ProfileEntity getProfile(String urlName);
 
-    boolean isValidId(Long id);
-
-    boolean isValidUrlName(String urlName);
-
     boolean existUsername(String username);
 }

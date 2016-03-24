@@ -46,14 +46,6 @@ public class ProfileDAO implements DAO {
         return profileRepository.findByUrlName(urlName);
     }
 
-    public boolean isValidId(Long id) {
-        return profileRepository.exists(id);
-    }
-
-    public boolean isValidUrlName(String urlName) {
-        return profileRepository.exists(urlName);
-    }
-
     public boolean existUsername(String username) {
         return profileRepository.findByUsername(username) != null;
     }
