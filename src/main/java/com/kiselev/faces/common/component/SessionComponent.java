@@ -9,7 +9,9 @@ public class SessionComponent {
 
     private Long id;
 
-    private boolean valid;
+    private String urlName;
+
+    private boolean logged;
 
     public Long getId() {
         return id;
@@ -19,11 +21,19 @@ public class SessionComponent {
         this.id = id;
     }
 
-    public boolean isValid() {
-        return valid;
+    public boolean isLogged() {
+        return logged;
     }
 
-    public void setValid(boolean valid) {
-        this.valid = valid;
+    public void setLogged(boolean logged) {
+        this.logged = logged;
+    }
+
+    public String getUrlName() {
+        return urlName;
+    }
+
+    public void setUrlName(String urlName) {
+        this.urlName = urlName;
     }
 }
