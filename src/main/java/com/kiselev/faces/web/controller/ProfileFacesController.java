@@ -21,50 +21,54 @@ public class ProfileFacesController {
 
     @RequestMapping(value = "/id{id}", method = RequestMethod.GET)
     public String getHandler(@PathVariable Long id, ModelMap model) {
+        return prepareGet(model, dao.getProfile(id));
+    }
 
-        ProfileEntity profile = dao.getProfile(id);
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public String getHandler(@PathVariable String username, ModelMap model) {
+        return prepareGet(model, dao.getProfile(username));
+    }
 
-        if (profile != null) {
-            unwrap(model, profile);
+    @RequestMapping(value = "/method/homepage", method = RequestMethod.POST)
+    public String homePage() {
 
-            Long selfId = component.getId();
-            String urlName = component.getUrlName();
+        Long selfId = component.getId();
+        String selfUrlName = component.getUrlName();
 
-            if (urlName != null) {
-                model.addAttribute("logged", true);
-                model.addAttribute("urlName", urlName);
-                model.addAttribute("self", urlName.equals(profile.getUrlName()));
+        if (selfUrlName != null) {
+            return "redirect:/" + selfUrlName;
 
-            } else if (selfId != null) {
-                model.addAttribute("logged", true);
-                model.addAttribute("id", selfId);
-                model.addAttribute("self", selfId.equals(id));
-            }
+        } else if (selfId != null) {
+            return "redirect:/id" + selfId;
 
-            return "profile";
         } else {
             return "error";
         }
     }
 
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public String getHandler(@PathVariable String username, ModelMap model) {
+    @RequestMapping(value = "/method/redirect/signin", method = RequestMethod.POST)
+    public String signinRedirect() {
+        return "redirect:/signin";
+    }
 
-        ProfileEntity profile = dao.getProfile(username);
+    private String prepareGet(ModelMap model, ProfileEntity profile) {
 
         if (profile != null) {
-            unwrap(model, profile);
+            model.addAttribute("logged", component.isLogged());
 
             Long selfId = component.getId();
-            String urlName = component.getUrlName();
+            String selfUrlName = component.getUrlName();
 
-            if (urlName != null) {
-                model.addAttribute("logged", true);
-                model.addAttribute("urlName", urlName);
-                model.addAttribute("self", urlName.equals(username));
+            model.addAttribute("full_name", profile.getFirstName() + " " + profile.getLastName());
+            model.addAttribute("birthday", profile.getBirthday());
+            model.addAttribute("hometown", profile.getHometown());
+            model.addAttribute("email", profile.getEmail());
+
+            if (selfUrlName != null) {
+                model.addAttribute("urlName", selfUrlName);
+                model.addAttribute("self", selfUrlName.equals(profile.getUrlName()));
 
             } else if (selfId != null) {
-                model.addAttribute("logged", true);
                 model.addAttribute("id", selfId);
                 model.addAttribute("self", selfId.equals(profile.getId()));
             }
@@ -73,17 +77,5 @@ public class ProfileFacesController {
         } else {
             return "error";
         }
-    }
-
-    @RequestMapping(value = "/method/logout", method = RequestMethod.POST)
-    public String navigate() {
-        return null;
-    }
-
-    private void unwrap(ModelMap model, ProfileEntity profile) {
-        model.addAttribute("full_name", profile.getFirstName() + " " + profile.getLastName());
-        model.addAttribute("birthday", profile.getBirthday());
-        model.addAttribute("hometown", profile.getHometown());
-        model.addAttribute("email", profile.getEmail());
     }
 }
