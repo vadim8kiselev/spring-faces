@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SignInFacesController {
 
@@ -30,7 +32,7 @@ public class SignInFacesController {
     }
 
     @RequestMapping(value = "/method/signin", method = RequestMethod.POST)
-    public String signin(@ModelAttribute("profile") ProfileEntity profile) {
+    public String signin(@ModelAttribute("profile") ProfileEntity profile, HttpSession session) {
 
         if (validator.fieldIsNotEmpty(profile.getUsername()) &&
                 validator.fieldIsNotEmpty(profile.getPassword())) {
@@ -44,6 +46,7 @@ public class SignInFacesController {
 
                 if (profileEntity.getFirstName() != null && profileEntity.getLastName() != null) {
                     component.setLogged(true);
+                    session.setAttribute("profile", profileEntity);
 
                     String urlName = profileEntity.getUrlName();
                     if (urlName != null) {

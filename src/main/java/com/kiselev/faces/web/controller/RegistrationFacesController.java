@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class RegistrationFacesController {
 
@@ -30,7 +32,7 @@ public class RegistrationFacesController {
     }
 
     @RequestMapping(value = "/method/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("profile") ProfileEntity profile) {
+    public String register(@ModelAttribute("profile") ProfileEntity profile, HttpSession session) {
 
         if (validator.fieldIsNotEmpty(profile.getFirstName()) &&
                 validator.fieldIsNotEmpty(profile.getLastName())) {
@@ -46,6 +48,7 @@ public class RegistrationFacesController {
             Long id = dao.saveProfile(profileEntity);
             if (id != null) {
                 component.setLogged(true);
+                session.setAttribute("profile", profileEntity);
                 return "redirect:/id" + id;
             } else {
                 //Unexpected error
