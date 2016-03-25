@@ -29,8 +29,8 @@ public class HomeFacesController {
         return "index";
     }
 
-    @RequestMapping(value = "/method/signup", method = RequestMethod.POST)
-    public String signup(@ModelAttribute("profile") ProfileEntity profile) {
+    @RequestMapping(value = "/session/up", method = RequestMethod.POST)
+    public String signup(@ModelAttribute("profile") ProfileEntity profile, ModelMap model) {
 
         if (validator.fieldIsNotEmpty(profile.getUsername()) &&
                 validator.fieldIsNotEmpty(profile.getPassword())) {
@@ -43,16 +43,16 @@ public class HomeFacesController {
                     component.setId(id);
                     return "redirect:/register";
                 } else {
-                    //Incorrect username or password
-                    return "redirect:/signup";
+                    model.addAttribute("error", "Incorrect username or password");
+                    return "index";
                 }
             } else {
-                //This nickname is already taken
-                return "redirect:/signup";
+                model.addAttribute("error", "This nickname is already taken");
+                return "index";
             }
         } else {
-            //This fields cannot be blank
-            return "redirect:/signup";
+            model.addAttribute("error", "This fields cannot be blank");
+            return "index";
         }
     }
 }

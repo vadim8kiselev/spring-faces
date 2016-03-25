@@ -22,9 +22,6 @@ public class SettingsFacesController {
     @Autowired
     private SessionComponent component;
 
-    @Autowired
-    private Validator validator;
-
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
     public String getHandler(ModelMap model) {
         model.addAttribute("profile", dao.getProfile(component.getId()));
@@ -32,7 +29,7 @@ public class SettingsFacesController {
     }
 
     @RequestMapping(value = "/method/settings", method = RequestMethod.POST)
-    public String settings(@ModelAttribute("profile") ProfileEntity profile) {
+    public String settings(@ModelAttribute("profile") ProfileEntity profile, ModelMap model) {
 
         ProfileEntity old = dao.getProfile(component.getId());
         profile.setId(old.getId());
@@ -51,7 +48,8 @@ public class SettingsFacesController {
                 return "redirect:/id" + component.getId();
             }
         } else {
-            return "redirect:/settings";
+            model.addAttribute("error", "This nickname is already taken");
+            return "settings";
         }
     }
 

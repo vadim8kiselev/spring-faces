@@ -7,6 +7,7 @@ import com.kiselev.faces.web.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,8 +32,9 @@ public class RegistrationFacesController {
         return "register";
     }
 
-    @RequestMapping(value = "/method/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("profile") ProfileEntity profile, HttpSession session) {
+    @RequestMapping(value = "/session/reg", method = RequestMethod.POST)
+    public String register(@ModelAttribute("profile") ProfileEntity profile,
+                           HttpSession session, ModelMap model) {
 
         if (validator.fieldIsNotEmpty(profile.getFirstName()) &&
                 validator.fieldIsNotEmpty(profile.getLastName())) {
@@ -51,12 +53,12 @@ public class RegistrationFacesController {
                 session.setAttribute("profile", profileEntity);
                 return "redirect:/id" + id;
             } else {
-                //Unexpected error
-                return "redirect:/register";
+                model.addAttribute("error", "Unexpected error");
+                return "register";
             }
         } else {
-            //This fields cannot be blank;
-            return "redirect:/register";
+            model.addAttribute("error", "This fields cannot be blank");
+            return "register";
         }
     }
 }

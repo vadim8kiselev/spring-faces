@@ -31,8 +31,9 @@ public class SignInFacesController {
         return "signin";
     }
 
-    @RequestMapping(value = "/method/signin", method = RequestMethod.POST)
-    public String signin(@ModelAttribute("profile") ProfileEntity profile, HttpSession session) {
+    @RequestMapping(value = "/session", method = RequestMethod.POST)
+    public String signin(@ModelAttribute("profile") ProfileEntity profile,
+                         HttpSession session, ModelMap model) {
 
         if (validator.fieldIsNotEmpty(profile.getUsername()) &&
                 validator.fieldIsNotEmpty(profile.getPassword())) {
@@ -59,12 +60,12 @@ public class SignInFacesController {
                     return "redirect:/register";
                 }
             } else {
-                //Incorrect username or password
-                return "redirect:/signin";
+                model.addAttribute("error", "Incorrect username or password");
+                return "signin";
             }
         } else {
-            //This fields cannot be blank
-            return "redirect:/signin";
+            model.addAttribute("error", "This fields cannot be blank");
+            return "signin";
         }
     }
 }
