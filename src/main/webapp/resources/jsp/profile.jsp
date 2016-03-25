@@ -21,29 +21,17 @@
 
         <div class="header-form">
             <c:if test="${logged}">
-                <c:if test="${urlName ne null}">
-                    <div class="header-button">
-                        <a class="header-form-link"
-                           href="<c:url value="/${urlName}"/>">My page</a>
-                    </div>
-                </c:if>
-
-                <c:if test="${urlName == null}">
-                    <div class="header-button">
-                        <a class="header-form-link"
-                           href="<c:url value="/id${id}"/>">My page</a>
-                    </div>
-                </c:if>
+                <form:form method="POST" action="method/homepage">
+                    <input type="submit" class="header-button" value="My page"/>
+                </form:form>
             </c:if>
 
             <c:if test="${not logged}">
-                <div class="header-button">
-                    <a class="header-form-link"
-                       href="<c:url value="/signin"/>">Sign in</a>
-                </div>
+                <form:form method="POST" action="/method/redirect/signin">
+                    <input type="submit" class="header-button" value="Sign in"/>
+                </form:form>
             </c:if>
         </div>
-
     </div>
 
     <!-- Page -->
@@ -135,7 +123,6 @@
                     <span class="links-unit-header-value">Emails</span>
                 </div>
                 <div id="emails-body" class="links-unit-body">
-                    <!-- Links table -->
                 </div>
 
                 <!-- Social networks block -->
@@ -144,7 +131,6 @@
                     <span class="links-unit-header-value">Social networks</span>
                 </div>
                 <div id="snetworks-body" class="links-unit-body">
-                    <!-- Links table -->
                 </div>
 
                 <!-- Multimedia block -->
@@ -152,7 +138,6 @@
                     <span class="links-unit-header-value">Multimedia</span>
                 </div>
                 <div id="media-body" class="links-unit-body">
-                    <!-- Links table -->
                 </div>
 
                 <!-- Others block -->
@@ -160,12 +145,11 @@
                     <span class="links-unit-header-value">Others</span>
                 </div>
                 <div id="others-body" class="links-unit-body">
-                    <!-- Links table -->
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
 </body>
 </html>
