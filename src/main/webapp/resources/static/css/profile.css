@@ -48,7 +48,7 @@ input, textarea {
 
 .header-form {
     height: 40px;
-    width: 140px;
+    width: 290px;
     float: right;
     padding-top: 5px;
 }
@@ -58,6 +58,14 @@ input, textarea {
     width: 140px;
     height: 40px;
     border: none;
+}
+
+.header-button-left {
+    float: left;
+}
+
+.header-button-right {
+    float: right;
 }
 
 .content {
@@ -90,15 +98,17 @@ input, textarea {
 .command-button {
     background-color: #6a6a6a;
     width: 100%;
-    height: 27px;
-    padding-top: 8px;
+    height: 30px;
+    padding-top: 5px;
     text-align: center;
 }
 
 .command-button-link {
-    text-decoration: none;
-    font-size: 17px;
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
     color: #ffffff;
+    border: none;
 }
 
 .information-block {

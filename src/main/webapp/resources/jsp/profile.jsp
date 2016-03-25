@@ -21,14 +21,27 @@
 
         <div class="header-form">
             <c:if test="${logged}">
-                <form:form method="POST" action="method/homepage">
-                    <input type="submit" class="header-button" value="My page"/>
+                <form:form method="POST" action="/method/homepage"
+                           cssClass="header-button-left">
+                    <input type="submit"
+                           class="header-button"
+                           value="My page"/>
+                </form:form>
+
+                <form:form method="POST" action="/method/logout"
+                           cssClass="header-button-right">
+                    <input type="submit"
+                           class="header-button"
+                           value="Logout"/>
                 </form:form>
             </c:if>
 
             <c:if test="${not logged}">
-                <form:form method="POST" action="/method/redirect/signin">
-                    <input type="submit" class="header-button" value="Sign in"/>
+                <form:form method="POST" action="/method/redirect/signin"
+                           cssClass="header-button-right">
+                    <input type="submit"
+                           class="header-button"
+                           value="Sign in"/>
                 </form:form>
             </c:if>
         </div>
@@ -44,10 +57,11 @@
                     <!-- Image -->
                 </div>
                 <c:if test="${self}">
-                    <div class="command-button">
-                        <a class="command-button-link"
-                           href="<c:url value="/settings"/>">Edit profile</a>
-                    </div>
+                    <form:form method="POST" action="/method/redirect/settings"
+                               cssClass="command-button">
+                        <input type="submit" class="command-button-link"
+                               value="Edit profile"/>
+                    </form:form>
                 </c:if>
                 <c:if test="${not self}">
                     <div class="command-button">
