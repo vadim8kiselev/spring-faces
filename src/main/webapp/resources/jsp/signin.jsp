@@ -25,7 +25,7 @@
             <div class="auth-label-wrapper">
                 <p class="auth-label">Password</p>
             </div>
-            <form:input path="password" cssClass="auth-field auth-text"
+            <form:hidden path="password" cssClass="auth-field auth-text"
                         autocomplete="off" required="required"/>
 
             <input type="submit" class="auth-field auth-button"
