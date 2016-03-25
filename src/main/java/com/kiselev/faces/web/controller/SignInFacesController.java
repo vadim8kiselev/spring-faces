@@ -1,7 +1,7 @@
 package com.kiselev.faces.web.controller;
 
 import com.kiselev.faces.common.component.SessionComponent;
-import com.kiselev.faces.common.dao.impl.ProfileDAO;
+import com.kiselev.faces.common.dao.DAO;
 import com.kiselev.faces.common.entities.ProfileEntity;
 import com.kiselev.faces.web.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 public class SignInFacesController {
 
     @Autowired
-    ProfileDAO dao;
+    private DAO dao;
 
     @Autowired
-    SessionComponent component;
+    private SessionComponent component;
 
     @Autowired
-    Validator validator;
+    private Validator validator;
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String getHandler(ModelMap model) {

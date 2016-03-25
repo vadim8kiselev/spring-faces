@@ -1,7 +1,7 @@
 package com.kiselev.faces.web.controller;
 
 import com.kiselev.faces.common.component.SessionComponent;
-import com.kiselev.faces.common.dao.impl.ProfileDAO;
+import com.kiselev.faces.common.dao.DAO;
 import com.kiselev.faces.common.entities.ProfileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +16,10 @@ import javax.servlet.http.HttpSession;
 public class ProfileFacesController {
 
     @Autowired
-    ProfileDAO dao;
+    private DAO dao;
 
     @Autowired
-    SessionComponent component;
+    private SessionComponent component;
 
     @RequestMapping(value = "/id{id}", method = RequestMethod.GET)
     public String getHandler(@PathVariable Long id, ModelMap model) {
