@@ -12,9 +12,14 @@
     <div class="auth-header">
         <p>Sign in to Faces</p>
     </div>
+    <c:if test="${error ne null}">
+        <div class="auth-unit auth-error auth-error-message">
+            <span>${error}</span>
+        </div>
+    </c:if>
     <div class="auth-body">
         <form:form method="POST" class="auth-input-fields"
-                   action="method/signin" modelAttribute="profile">
+                   action="/session" modelAttribute="profile">
 
             <div class="auth-label-wrapper">
                 <p class="auth-label">Usernmame</p>
@@ -26,7 +31,7 @@
                 <p class="auth-label">Password</p>
             </div>
             <form:password path="password" cssClass="auth-field auth-text"
-                        autocomplete="off" required="required"/>
+                           autocomplete="off" required="required"/>
 
             <input type="submit" class="auth-field auth-button"
                    value="Sign in"/>

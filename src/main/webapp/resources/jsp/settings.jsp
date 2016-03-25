@@ -11,6 +11,11 @@
 <div class="settings-frame">
     <form:form method="POST" action="/method/settings" cssClass="settings-form"
                modelAttribute="profile">
+        <c:if test="${error ne null}">
+            <div class="settings-error-message">
+                <span class="error-message">${error}</span>
+            </div>
+        </c:if>
         <div class="settings-column settings-left-column">
             <!-- First name -->
             <div class="settings-unit">

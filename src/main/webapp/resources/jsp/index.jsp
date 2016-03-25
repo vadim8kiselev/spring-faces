@@ -12,9 +12,14 @@
     <div class="auth-header">
         <p>Sign up to Faces</p>
     </div>
+    <c:if test="${error ne null}">
+        <div class="auth-unit auth-error auth-error-message">
+            <span>${error}</span>
+        </div>
+    </c:if>
     <div class="auth-body">
         <form:form method="POST" class="auth-input-fields"
-                   action="method/signup" modelAttribute="profile">
+                   action="/session/up" modelAttribute="profile">
 
             <div class="auth-label-wrapper">
                 <p class="auth-label">Usernmame</p>
