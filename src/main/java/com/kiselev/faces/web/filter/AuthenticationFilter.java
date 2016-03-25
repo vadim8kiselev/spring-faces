@@ -24,14 +24,14 @@ public class AuthenticationFilter implements Filter {
         ProfileEntity session = (ProfileEntity) request.getSession().getAttribute("profile");
 
         if (session == null) {
-            if (url.contains("settings") || url.contains("register")) {
+            if (url.contains("settings")) {
                 response.sendRedirect(request.getContextPath() + "/signin");
             } else {
                 chain.doFilter(req, res);
             }
         } else {
             if (url.contains("signin") || url.contains("signup") ||
-                    url.contains("register") || (url.length() == 1)) {
+                    url.contains("register") || url.contains("session") || (url.length() == 1)) {
 
                 if (session.getUrlName() != null) {
                     response.sendRedirect(request.getContextPath() + "/" + session.getUrlName());
