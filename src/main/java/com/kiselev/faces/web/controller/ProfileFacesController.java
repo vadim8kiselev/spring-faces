@@ -66,7 +66,8 @@ public class ProfileFacesController {
 
     private String prepareGet(ModelMap model, ProfileEntity profile) {
 
-        if (profile != null) {
+        if (profile != null &&
+                profile.getFirstName() != null && profile.getLastName() != null) {
             model.addAttribute("logged", component.isLogged());
 
             Long selfId = component.getId();
