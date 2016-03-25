@@ -39,9 +39,6 @@ public class ProfileEntity {
     @Column(name = "photo")
     private String photo;
 
-    @Column(name = "language")
-    private String language;
-
     public ProfileEntity() {
     }
 
@@ -71,7 +68,11 @@ public class ProfileEntity {
     }
 
     public void setPassword(String password) {
-        this.password = password.trim();
+        if (password != null) {
+            this.password = password.trim();
+        } else {
+            this.password = "";
+        }
     }
 
     public String getUrlName() {
@@ -79,7 +80,11 @@ public class ProfileEntity {
     }
 
     public void setUrlName(String urlName) {
-        this.urlName = urlName.trim();
+        if (urlName != null && !urlName.trim().equals("")) {
+            this.urlName = urlName.trim();
+        } else {
+            this.urlName = null;
+        }
     }
 
     public String getFirstName() {
@@ -87,7 +92,11 @@ public class ProfileEntity {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName.trim();
+        if (firstName != null && !firstName.trim().equals("")) {
+            this.firstName = firstName.trim();
+        } else {
+            this.firstName = null;
+        }
     }
 
     public String getLastName() {
@@ -95,7 +104,11 @@ public class ProfileEntity {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName.trim();
+        if (lastName != null && !lastName.trim().equals("")) {
+            this.lastName = lastName.trim();
+        } else {
+            this.lastName = null;
+        }
     }
 
     public String getBirthday() {
@@ -103,7 +116,11 @@ public class ProfileEntity {
     }
 
     public void setBirthday(String birthday) {
-        this.birthday = birthday.trim();
+        if (birthday != null && !birthday.trim().equals("")) {
+            this.birthday = birthday.trim();
+        } else {
+            this.birthday = null;
+        }
     }
 
     public String getHometown() {
@@ -111,7 +128,11 @@ public class ProfileEntity {
     }
 
     public void setHometown(String hometown) {
-        this.hometown = hometown.trim();
+        if (hometown != null && !hometown.trim().equals("")) {
+            this.hometown = hometown.trim();
+        } else {
+            this.hometown = null;
+        }
     }
 
     public String getEmail() {
@@ -119,7 +140,11 @@ public class ProfileEntity {
     }
 
     public void setEmail(String email) {
-        this.email = email.trim();
+        if (email != null && !email.trim().equals("")) {
+            this.email = email.trim();
+        } else {
+            this.email = null;
+        }
     }
 
     public String getPhoto() {
@@ -127,15 +152,11 @@ public class ProfileEntity {
     }
 
     public void setPhoto(String photo) {
-        this.photo = photo.trim();
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
+        if (photo != null && !photo.trim().equals("")) {
+            this.photo = photo.trim();
+        } else {
+            this.photo = null;
+        }
     }
 
     public void secret() {
