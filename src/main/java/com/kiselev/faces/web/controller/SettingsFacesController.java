@@ -3,7 +3,6 @@ package com.kiselev.faces.web.controller;
 import com.kiselev.faces.common.component.SessionComponent;
 import com.kiselev.faces.common.dao.DAO;
 import com.kiselev.faces.common.entities.ProfileEntity;
-import com.kiselev.faces.web.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +27,7 @@ public class SettingsFacesController {
         return "settings";
     }
 
-    @RequestMapping(value = "/method/settings", method = RequestMethod.POST)
+    @RequestMapping(value = "/session/settings", method = RequestMethod.POST)
     public String settings(@ModelAttribute("profile") ProfileEntity profile, ModelMap model) {
 
         ProfileEntity old = dao.getProfile(component.getId());

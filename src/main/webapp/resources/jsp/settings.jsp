@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="settings-frame">
-    <form:form method="POST" action="/method/settings" cssClass="settings-form"
+    <form:form method="POST" action="/session/settings" cssClass="settings-form"
                modelAttribute="profile">
         <c:if test="${error ne null}">
             <div class="settings-error-message">
