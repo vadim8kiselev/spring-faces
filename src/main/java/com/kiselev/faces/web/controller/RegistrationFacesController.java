@@ -45,6 +45,7 @@ public class RegistrationFacesController {
 
             Long id = dao.saveProfile(profileEntity);
             if (id != null) {
+                component.setLogged(true);
                 return "redirect:/id" + id;
             } else {
                 //Unexpected error
