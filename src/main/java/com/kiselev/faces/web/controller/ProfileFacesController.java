@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class ProfileFacesController {
 
@@ -48,6 +50,17 @@ public class ProfileFacesController {
 
     @RequestMapping(value = "/method/redirect/signin", method = RequestMethod.POST)
     public String signinRedirect() {
+        return "redirect:/signin";
+    }
+
+    @RequestMapping(value = "/method/redirect/settings", method = RequestMethod.POST)
+    public String settingsRedirect() {
+        return "redirect:/settings";
+    }
+
+    @RequestMapping(value = "/method/logout", method = RequestMethod.POST)
+    public String logout(HttpSession session) {
+        session.invalidate();
         return "redirect:/signin";
     }
 
