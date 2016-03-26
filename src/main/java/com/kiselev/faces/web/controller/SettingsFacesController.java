@@ -27,7 +27,7 @@ public class SettingsFacesController {
         return "settings";
     }
 
-    @RequestMapping(value = "/session/settings", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String settings(@ModelAttribute("profile") ProfileEntity profile, ModelMap model) {
 
         ProfileEntity old = dao.getProfile(component.getId());
@@ -37,9 +37,7 @@ public class SettingsFacesController {
 
         if (dao.saveProfile(profile) != null) {
 
-            if (profile.getUrlName() != null && !profile.getUrlName().equals(component.getUrlName())) {
-                component.setUrlName(profile.getUrlName());
-            }
+            component.setUrlName(profile.getUrlName());
 
             if (component.getUrlName() != null) {
                 return "redirect:/" + component.getUrlName();
