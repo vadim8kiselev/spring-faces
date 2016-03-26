@@ -1,5 +1,6 @@
 package com.kiselev.faces.common.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.persistence.*;
@@ -55,6 +56,7 @@ public class ProfileEntity {
         this.id = id;
     }
 
+    @JsonIgnore
     public String getUsername() {
         return username;
     }
@@ -63,6 +65,7 @@ public class ProfileEntity {
         this.username = username.trim();
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }

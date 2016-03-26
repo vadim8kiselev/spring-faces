@@ -13,6 +13,8 @@
     <context:component-scan base-package="com.kiselev.faces.web.controller"/>
     <context:component-scan base-package="com.kiselev.faces.web.validator"/>
 
+    <context:component-scan base-package="com.kiselev.faces.rest.service"/>
+
     <mvc:annotation-driven/>
     <mvc:resources mapping="/resources/static/**"
                    location="/resources/static/"/>
@@ -21,6 +23,17 @@
         <property name="prefix" value="/resources/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jsonMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
