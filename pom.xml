@@ -78,6 +78,13 @@
             <version>9.4-1200-jdbc4</version>
         </dependency>
 
+        <!-- Log4j-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
         <!-- Common codec -->
         <dependency>
             <groupId>commons-codec</groupId>
