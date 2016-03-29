@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    overflow: hidden;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+input:focus {
+    outline-width: 0;
+}
+
+input, textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
+.wrapper {
+    height: 100%;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #ffffff;
+    width: 100%;
+    height: 55px;
+    padding-top: 5px;
+}
+
+.header-logo {
+    padding-left: 10px;
+    float: left;
+}
+
+.page-name {
+    font-size: 20px;
+    padding: 13px;
+    float: left;
+}
+
+.header-form {
+    height: 40px;
+    width: 290px;
+    float: right;
+    padding-top: 5px;
+}
+
+.header-button {
+    background-color: #eaeaea;
+    width: 140px;
+    height: 40px;
+    border: none;
+}
+
+.header-button-left {
+    float: left;
+}
+
+.header-button-right {
+    float: right;
+}
+
+.content {
+    height: 100%;
+}
+
+.main-block {
+    padding: 10px;
+    width: auto;
+    height: auto;
+    background-color: #eaeaea;
+}
+
+.photo-block {
+    width: 200px;
+    float: left;
+}
+
+.photo {
+    background-color: #000000;
+    width: 200px;
+    height: 280px;
+    margin-bottom: 10px;
+}
+
+.photo-img {
+
+}
+
+.command-button {
+    background-color: #6a6a6a;
+    width: 100%;
+    height: 30px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.command-button-link {
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+}
+
+.information-block {
+    width: 570px;
+    height: 325px;
+    float: right;
+}
+
+.information-header {
+    background-color: #ffffff;
+    width: 100%;
+    padding-top: 10px;
+    height: 27px;
+    text-align: center;
+}
+
+.information-logo {
+    padding-left: 30px;
+}
+
+.information-body {
+    background-color: #ffffff;
+    width: auto;
+    height: 100%;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.information-unit {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 30px;
+    padding-left: 5px;
+}
+
+.information-unit-label-wrapper {
+    width: 160px;
+    float: left;
+}
+
+.information-unit-label {
+    color: #626262;
+}
+
+.information-unit-value-wrapper {
+    width: 370px;
+    float: right;
+}
+
+.information-unit-value {
+
+}
