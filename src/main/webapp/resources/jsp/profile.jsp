@@ -54,6 +54,9 @@
             <div class="photo-block">
                 <div class="photo">
                     <!-- Image -->
+                    <c:if test="${photo ne null}">
+                        <img src="<c:url value="${photo}"/>"/>
+                    </c:if>
                 </div>
                 <c:if test="${self}">
                     <form:form method="POST" action="/method/redirect/settings"

@@ -77,6 +77,7 @@ public class ProfileFacesController {
             model.addAttribute("birthday", profile.getBirthday());
             model.addAttribute("hometown", profile.getHometown());
             model.addAttribute("email", profile.getEmail());
+            model.addAttribute("photo", profile.getPhoto());
 
             if (selfUrlName != null) {
                 model.addAttribute("urlName", selfUrlName);
