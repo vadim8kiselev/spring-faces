@@ -6,9 +6,8 @@
     <title>Faces</title>
     <link rel="stylesheet" type="text/css"
           href="<c:url value='/resources/static/css/profile.css' />"/>
-    <script src="<c:url value='/resources/static/js/links.js' />"></script>
 </head>
-<body onload="slider('slider', 0)">
+<body>
 <div class="wrapper">
     <!-- Header -->
     <div class="header">
@@ -128,41 +127,6 @@
                 </c:if>
             </div>
         </div>
-
-        <!-- Links block -->
-        <div class="links-block">
-            <div id="slider">
-                <!-- Emails block -->
-                <div id="emails-header" class="links-unit-header emails">
-                    <span class="links-unit-header-value">Emails</span>
-                </div>
-                <div id="emails-body" class="links-unit-body">
-                </div>
-
-                <!-- Social networks block -->
-                <div id="snetworks-header"
-                     class="links-unit-header social-networks">
-                    <span class="links-unit-header-value">Social networks</span>
-                </div>
-                <div id="snetworks-body" class="links-unit-body">
-                </div>
-
-                <!-- Multimedia block -->
-                <div id="media-header" class="links-unit-header multimedia">
-                    <span class="links-unit-header-value">Multimedia</span>
-                </div>
-                <div id="media-body" class="links-unit-body">
-                </div>
-
-                <!-- Others block -->
-                <div id="others-header" class="links-unit-header others">
-                    <span class="links-unit-header-value">Others</span>
-                </div>
-                <div id="others-body" class="links-unit-body">
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 </body>
