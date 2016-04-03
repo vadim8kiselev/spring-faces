@@ -3,6 +3,7 @@ package com.kiselev.faces.web.controller;
 import com.kiselev.faces.common.component.SessionComponent;
 import com.kiselev.faces.common.dao.DAO;
 import com.kiselev.faces.common.entities.ProfileEntity;
+import com.kiselev.faces.web.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +22,9 @@ public class SettingsFacesController {
     @Autowired
     private SessionComponent component;
 
+    @Autowired
+    private Validator validator;
+
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
     public String getHandler(ModelMap model) {
         model.addAttribute("profile", dao.getProfile(component.getId()));
@@ -35,17 +39,23 @@ public class SettingsFacesController {
         profile.setUsername(old.getUsername());
         profile.setPassword(old.getPassword());
 
-        if (dao.saveProfile(profile) != null) {
+        if (validator.validateUrlName(profile.getUrlName())) {
 
-            component.setUrlName(profile.getUrlName());
+            if (dao.saveProfile(profile) != null) {
 
-            if (component.getUrlName() != null) {
-                return "redirect:/" + component.getUrlName();
+                component.setUrlName(profile.getUrlName());
+
+                if (component.getUrlName() != null) {
+                    return "redirect:/" + component.getUrlName();
+                } else {
+                    return "redirect:/id" + component.getId();
+                }
             } else {
-                return "redirect:/id" + component.getId();
+                model.addAttribute("error", "This nickname is already taken");
+                return "settings";
             }
         } else {
-            model.addAttribute("error", "This nickname is already taken");
+            model.addAttribute("error", "Invalid format of nickname");
             return "settings";
         }
     }
